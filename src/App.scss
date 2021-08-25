@@ -1,0 +1,105 @@
+.App {
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    width: 1200px;
+    min-height: 500px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    position: relative;
+
+    .formContainer {
+      margin: 30px;
+
+      .inputBlock {
+        display: flex;
+
+        .inputContainer {
+          width: 280px;
+          height: 60px;
+          margin-right: 30px;
+          margin-bottom: 80px;
+          position: relative;
+
+          .input {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .textareaBlock {
+        position: relative;
+        width: 900px;
+
+        .textareaSign {
+          .textareaSignRed {
+            color: #df3a4d;
+          }
+          .textareaSignGreen {
+            color: #15a863;
+          }
+        }
+
+        .textarea {
+          width: 100%;
+          min-height: 100px;
+        }
+      }
+
+      .button {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 30px;
+        bottom: 30px;
+        background-color: #07e;
+        border-radius: 4px;
+        width: 180px;
+        height: 44px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        cursor: pointer;
+
+        &:active {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .errorInput {
+      position: absolute;
+      width: 100%;
+      min-height: 40px;
+      background-color: rgba(241, 109, 106, .2);
+      color: #df3a4d;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 8px 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    .messageInput {
+      position: absolute;
+      width: 100%;
+      min-height: 40px;
+      background: rgba(0, 153, 255, .2);
+      color: #07e;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 8px 4px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+

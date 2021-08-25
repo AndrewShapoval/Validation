@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-const useValidation = (value: string, validations: any) => {
+const useValidation = (value: string, validations: ValidationsType) => {
     const [isEmpty, setEmpty] = useState(true)
     const [isNumber, setIsNumber] = useState(true)
     const [isLetter, setIsLetter] = useState(true)
@@ -9,25 +9,23 @@ const useValidation = (value: string, validations: any) => {
 
     useEffect(() => {
         for (const validation in validations) {
-            switch (validation) {
-                case "isEmpty":
-                    value ? setEmpty(false) : setEmpty(true)
-                    break;
-                case "isNumber":
-                    if (/^[0-9]+$/.test(value)) {
-                        setIsNumber(false)
-                    } else setIsNumber(true)
-                    break;
-                case "isLetter":
-                    if (/^[а-яА-Я]+$/.test(value)) {
-                        setIsLetter(false)
-                    } else setIsLetter(true)
-                    break;
-                case "minLength":
-                    value.length < validations[validation] ? setMinLengthError(true) : setMinLengthError(false)
-                    setLengthValue(value.length)
-
-                    break;
+            if (validations.hasOwnProperty(validation)) {
+                switch (validation) {
+                    case "isEmpty":
+                        value ? setEmpty(false) : setEmpty(true)
+                        break;
+                    case "isNumber":
+                        /^[0-9]+$/.test(value) ? setIsNumber(false) : setIsNumber(true)
+                        break;
+                    case "isLetter":
+                        /^[а-яА-Я]+$/.test(value) ? setIsLetter(false) : setIsLetter(true)
+                        break;
+                    case "minLength":
+                        const minLength = validations[validation] || 0
+                        value.length < minLength ? setMinLengthError(true) : setMinLengthError(false)
+                        setLengthValue(value.length)
+                        break;
+                }
             }
         }
     }, [value])
